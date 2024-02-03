@@ -50,7 +50,8 @@ def patch_yaml(yaml_contents: str, patches: Sequence[str]) -> str:
     yaml = YAML()
     yaml.preserve_quotes = True
     yaml.indent = 2
-    yaml.sequence_dash_offset = 2
+    # output will be broken
+    # yaml.sequence_dash_offset = 2
 
     # Parse yaml using ruamel.yaml to preserve most of the original formatting/comments
     parsed = yaml.load(yaml_contents)
