@@ -61,10 +61,10 @@ def patch_yaml(yaml_contents: str, patches: Sequence[str]) -> str:
     yamlparser = YAML()
     for p in patches:
         if "+=" in p:
-            path, value = p.split("+=")
+            path, value = p.split("+=", maxsplit=1)
             action = _patch._action_append
         else:
-            path, value = p.split("=")
+            path, value = p.split("=", maxsplit=1)
             action = _patch._action_set
 
         _apply_patch(parsed, path, action, yamlparser.load(value))
